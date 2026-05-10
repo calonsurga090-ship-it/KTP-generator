@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-KTP Generator - Blue Flame Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Video Background Website -->
+    <div class="video-bg-wrapper">
+        <video class="bg-video-web" autoplay loop muted playsinline id="bgVideoWeb">
+            <source src="backgroundvideo.mp4" type="video/mp4">
+            <!-- Ganti dengan URL video background Anda -->
+        </video>
+        <div class="video-bg-overlay"></div>
+    </div>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Video Header Wrapper -->
+    <div class="video-wrapper" id="videoWrapper">
+        <video class="bg-video" autoplay loop muted playsinline id="bgVideo">
+            <source src="HeaderVideo.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        
+        <!-- Music Button -->
+        <button class="music-btn" id="musicBtn">
+            <span class="music-icon">🎵</span>
+            <span class="music-text">Play</span>
+        </button>
+
+        <!-- WA Logo -->
+        <a href="https://wa.me/6281234567890" class="wa-float" id="waLink" target="_blank">
+            <div class="wa-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+            </div>
+        </a>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🔥 <span class="gradient-text">E-KTP Generator</span></h1>
+            <p class="header-subtitle">Blue Flame Edition • v5.0</p>
+        </div>
+
+        <!-- Workspace -->
+        <div class="workspace">
+            <!-- Input Panel -->
+            <div class="input-panel">
+                <div class="panel-header">
+                    <span>📋 Data Penduduk</span>
+                    <span class="panel-badge">◈</span>
+                </div>
+
+                <!-- Photo Upload -->
+                <div class="photo-upload" onclick="document.getElementById('photoInput').click()">
+                    <label class="photo-label" for="photoInput">
+                        <span>📁</span>
+                        <span>Pilih foto</span>
+                    </label>
+                    <input type="file" id="photoInput" accept="image/*">
+                    <img id="photoPreview" class="preview-mini" style="display:none;">
+                </div>
+
+                <!-- URL Input -->
+                <div class="url-input-group">
+                    <input type="text" id="photoUrl" placeholder="🔗 Link Foto">
+                    <button id="loadUrlBtn">↺</button>
+                </div>
+
+                <!-- Form Fields -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nik">NIK</label>
+                        <input type="text" id="nik" placeholder="16 digit NIK">
+                    </div>
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" id="nama" placeholder="Nama lengkap">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ttl">Tempat / Tgl Lahir</label>
+                    <input type="text" id="ttl" placeholder="Jakarta, 01-09-2000">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="jenis_kelamin">Jenis Kelamin</label>
+                        <select id="jenis_kelamin">
+                            <option value="">Pilih</option>
+                            <option value="LAKI-LAKI">LAKI-LAKI</option>
+                            <option value="PEREMPUAN">PEREMPUAN</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="golongan_darah">Gol. Darah</label>
+                        <select id="golongan_darah">
+                            <option value="">Pilih</option>
+                            <option value="O">O</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="AB">AB</option>
+                            <option value="-">-</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" id="alamat" placeholder="Jl. xxx xxx xxx">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="rt_rw">RT/RW</label>
+                        <input type="text" id="rt_rw" placeholder="000/000">
+                    </div>
+                    <div class="form-group">
+                        <label for="kel_desa">Kel/Desa</label>
+                        <input type="text" id="kel_desa" placeholder="xxx">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="kecamatan">Kecamatan</label>
+                    <input type="text" id="kecamatan" placeholder="xxx">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="agama">Agama</label>
+                        <select id="agama">
+                            <option value="">Pilih</option>
+                            <option value="ISLAM">ISLAM</option>
+                            <option value="KRISTEN">KRISTEN</option>
+                            <option value="KATOLIK">KATOLIK</option>
+                            <option value="HINDU">HINDU</option>
+                            <option value="BUDHA">BUDHA</option>
+                            <option value="KONGHUCU">KONGHUCU</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status">
+                            <option value="">Pilih</option>
+                            <option value="BELUM MENIKAH">BELUM MENIKAH</option>
+                            <option value="MENIKAH">MENIKAH</option>
+                            <option value="CERAI HIDUP">CERAI HIDUP</option>
+                            <option value="CERAI MATI">CERAI MATI</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pekerjaan">Pekerjaan</label>
+                    <input type="text" id="pekerjaan" placeholder="Wiraswasta">
+                </div>
+
+                <div class="form-group">
+                    <label for="kewarganegaraan">Kewarganegaraan</label>
+                    <input type="text" id="kewarganegaraan" value="WNI">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="provinsi">Provinsi</label>
+                        <input type="text" id="provinsi" placeholder="JAKARTA SELATAN">
+                    </div>
+                    <div class="form-group">
+                        <label for="kota">Kota</label>
+                        <input type="text" id="kota" placeholder="JAKARTA">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="masa_berlaku">Berlaku Hingga</label>
+                        <input type="text" id="masa_berlaku" value="SEUMUR HIDUP">
+                    </div>
+                    <div class="form-group">
+                        <label for="terbuat">Tanggal Terbit</label>
+                        <input type="text" id="terbuat" placeholder="19-10-2023">
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="button-group">
+                    <button class="btn-primary" id="generateBtn">
+                        <span>⚡</span>
+                        <span>Generate</span>
+                    </button>
+                    <button class="btn-success" id="saveBtn">
+                        <span>💾</span>
+                        <span>Simpan</span>
+                    </button>
+                </div>
+
+                <p class="info-text">✦ Template dari URL • Fitur WA & Musik ✦</p>
+            </div>
+
+            <!-- Result Panel -->
+            <div class="result-panel">
+                <div class="panel-header">
+                    <span>🪪 Hasil KTP</span>
+                    <span class="panel-badge">◈</span>
+                </div>
+
+                <div class="ktp-canvas-wrapper" id="ktpWrapper">
+                    <canvas id="ktpCanvas" width="640" height="400"></canvas>
+                    <div class="ktp-border-glow"></div>
+                </div>
+
+                <p class="click-hint">🔍 Klik gambar untuk zoom</p>
+
+                <div class="result-actions">
+                    <button class="btn-share" id="shareBtn">
+                        <span>📤</span>
+                        <span>Share WA</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Zoom Modal -->
+    <div class="zoom-modal" id="zoomModal">
+        <span class="close-zoom" id="closeZoom">×</span>
+        <img id="zoomImage" alt="Zoomed KTP">
+        <div class="zoom-hint">🖐️ Cubit / Scroll untuk zoom • Geser gambar</div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
