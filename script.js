@@ -4,7 +4,7 @@
 // ===== KONFIGURASI =====
 const TEMPLATE_URL = "https://files.catbox.moe/w4jbav.jpg";
 const DEFAULT_PHOTO_URL = "";
-const WA_LINK = "https://wa.me/6281234567890";
+const WA_LINK = "https://whatsapp.com/channel/0029Vb7sv8qFcovxf4EHMj2G";
 const MUSIC_URL = "https://files.catbox.moe/n0hdj7.m4a";
 const VIDEO_URL = "https://files.catbox.moe/your-video.mp4"; // Ganti dengan URL video Anda
 
